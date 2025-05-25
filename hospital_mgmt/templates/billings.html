@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %} {# Ensure this is at the very top if you use static files #}
+
+{% block title %}Swaastya - Billings{% endblock %}
+
+{% block content %}
+<h1 class="page-title" data-i18n="billings_page_title">Billing Records</h1>
+<p class="page-intro" data-i18n="billing_intro">Access detailed billing information for all patients.</p>
+
+<ul class="data-list">
+    {% if billings %}
+        {% for bill in billings %}
+        <li>
+            <div>
+                <strong data-i18n="billing_patient_label">Patient:</strong> {{ bill.patient.name }}<br>
+                <strong data-i18n="billing_service_label">Service:</strong> {{ bill.service_description }}<br> {# CORRECTED: Changed to service_description #}
+                <strong data-i18n="billing_amount_label">Amount:</strong> ${{ bill.amount }}<br>
+                <strong data-i18n="billing_date_label">Date:</strong> {{ bill.billing_date|date:"F j, Y" }}<br>
+                <strong data-i18n="billing_paid_label">Paid:</strong>
+                {% if bill.is_paid %}
+                    <span style="color: #28a745;" data-i18n="yes">Yes</span>
+                {% else %}
+                    <span style="color: #dc3545;" data-i18n="no">No</span>
+                {% endif %}
+            </div>
+            {# Download Button #}
+            <a href="{% url 'download_bill' bill.id %}" class="download-bill-button" title="Download Bill">
+                <i class="fas fa-download"></i> <span data-i18n="download_bill_button">Download Bill</span>
+            </a>
+        </li>
+        {% endfor %}
+    {% else %}
+        <p data-i18n="no_billings">No billing records found.</p>
+    {% endif %}
+</ul>
+{% endblock %}

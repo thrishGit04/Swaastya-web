@@ -1,0 +1,111 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Swaastya - Hospital Management{% endblock %}</title>
+    {# Favicon - using the specified logo.png.jpeg #}
+    <link rel="icon" type="image/jpeg" href="{% static 'images/logo.png.jpeg' %}"> 
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+    <div class="dashboard-container">
+        {# Sidebar Navigation #}
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                {# Sidebar Logo - using the specified logo.png.jpeg #}
+                <img src="{% static 'images/logo.png.jpeg' %}" alt="Swaastya Logo" class="sidebar-logo">
+                <h2 data-i18n="app_main_title">Swaastya</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="/" class="nav-item active" data-i18n="nav_dashboard">
+                    <i class="fas fa-th-large"></i> <span class="nav-text">Dashboard</span>
+                </a>
+                <a href="/patients/" class="nav-item" data-i18n="nav_patients">
+                    <i class="fas fa-user-injured"></i> <span class="nav-text">Patients</span>
+                </a>
+                <a href="/doctors/" class="nav-item" data-i18n="nav_doctors">
+                    <i class="fas fa-user-md"></i> <span class="nav-text">Doctors</span>
+                </a>
+                <a href="/appointments/" class="nav-item" data-i18n="nav_appointments">
+                    <i class="fas fa-calendar-check"></i> <span class="nav-text">Appointments</span>
+                </a>
+                <a href="/billings/" class="nav-item" data-i18n="nav_billings">
+                    <i class="fas fa-file-invoice-dollar"></i> <span class="nav-text">Billings</span>
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item">
+                    <i class="fas fa-cog"></i> <span class="nav-text" data-i18n="sidebar_settings">Settings</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <i class="fas fa-sign-out-alt"></i> <span class="nav-text" data-i18n="sidebar_logout">Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        {# Main Content Area #}
+        <div class="main-content-area">
+            {# Top Bar Header #}
+            <header class="top-bar">
+                <div class="top-bar-left">
+                    <h1 data-i18n="dashboard_heading">Dashboard</h1>
+                </div>
+                <div class="top-bar-right">
+                    <div class="user-profile-icons">
+                        <i class="fas fa-bell"></i>
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="search-and-lang-container">
+                        <div class="search-bar">
+                            <i class="fas fa-search"></i>
+                            <input type="text" placeholder="Search..." data-i18n-placeholder="search_placeholder">
+                            <button data-i18n="search_button">Search</button>
+                        </div>
+                        <select id="language-selector" class="language-selector">
+                            <option value="en">English</option>
+                            <option value="hi">Hindi</option>
+                            <option value="kn">Kannada</option>
+                        </select>
+                        {# Theme Toggle Button #}
+                        <div class="theme-toggle">
+                            <input type="checkbox" id="theme-switch" class="theme-switch-checkbox">
+                            <label for="theme-switch" class="theme-switch-label">
+                                <i class="fas fa-sun toggle-icon light-icon"></i>
+                                <i class="fas fa-moon toggle-icon dark-icon"></i>
+                                <span class="toggle-ball"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="content-wrapper">
+                {% block content %}{% endblock %}
+            </main>
+        </div>
+    </div>
+
+    <script src="{% static 'js/translate.js' %}" defer></script>
+    <script>
+        document.getElementById('language-selector').addEventListener('change', translatePage);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const navItems = document.querySelectorAll('.sidebar-nav .nav-item');
+            const currentPath = window.location.pathname;
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === currentPath || (currentPath === '/' && item.getAttribute('href') === '/')) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

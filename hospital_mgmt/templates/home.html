@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="dashboard-grid">
+        {# Card 1: Today's Appointments #}
+        <div class="dashboard-card card-appointments">
+            <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
+            <div class="card-content">
+                <div class="card-title" data-i18n="card_appointments_title">Today's Appointments</div>
+                <div class="card-value">7</div>
+                <div class="card-footer">
+                    <i class="fas fa-arrow-up text-green"></i> <small data-i18n="card_appointments_footer">+5% from last week</small>
+                </div>
+            </div>
+        </div>
+
+        {# Card 2: Vacancies #}
+        <div class="dashboard-card card-vacancies">
+            <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+            <div class="card-content">
+                <div class="card-title" data-i18n="card_vacancies_title">Vacancies</div>
+                <div class="card-value">12</div>
+                <div class="card-footer">
+                    <i class="fas fa-plus text-blue"></i> <small data-i18n="card_vacancies_footer">+2 new this week</small>
+                </div>
+            </div>
+        </div>
+
+        {# Card 3: Candidates #}
+        <div class="dashboard-card card-candidates">
+            <div class="card-icon"><i class="fas fa-users"></i></div>
+            <div class="card-content">
+                <div class="card-title" data-i18n="card_candidates_title">Candidates</div>
+                <div class="card-value">24</div>
+                <div class="card-footer">
+                    <i class="fas fa-arrow-up text-green"></i> <small data-i18n="card_candidates_footer">+8 from last month</small>
+                </div>
+            </div>
+        </div>
+
+        {# Card 4: Hospitals #}
+        <div class="dashboard-card card-hospitals">
+            <div class="card-icon"><i class="fas fa-hospital"></i></div>
+            <div class="card-content">
+                <div class="card-title" data-i18n="card_hospitals_title">Hospitals</div>
+                <div class="card-value">3</div>
+                <div class="card-footer">
+                    <i class="fas fa-equals text-gray"></i> <small data-i18n="card_hospitals_footer">No change</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-sections">
+        {# Today's Appointments Section #}
+        <div class="section-card appointments-section">
+            <div class="section-header">
+                <h3 data-i18n="section_today_appointments_title">Today's Appointments</h3>
+                <a href="/appointments/" data-i18n="view_all_link">View All</a>
+            </div>
+            <ul class="appointment-list">
+                <li class="appointment-item">
+                    <div class="appointment-details">
+                        <span class="appointment-name">Rajesh Kumar</span>
+                        <span class="appointment-time">10:00 AM</span>
+                        <span class="appointment-description">Chest pain and shortness of breath</span>
+                    </div>
+                    <span class="appointment-status status-confirmed" data-i18n="status_confirmed">confirmed</span>
+                </li>
+                <li class="appointment-item">
+                    <div class="appointment-details">
+                        <span class="appointment-name">Meera Iyer</span>
+                        <span class="appointment-time">11:00 AM</span>
+                        <span class="appointment-description">Follow up after angioplasty</span>
+                    </div>
+                    <span class="appointment-status status-confirmed" data-i18n="status_confirmed">confirmed</span>
+                </li>
+                <li class="appointment-item">
+                    <div class="appointment-details">
+                        <span class="appointment-name">Suresh Reddy</span>
+                        <span class="appointment-time">2:00 PM</span>
+                        <span class="appointment-description">Abnormal ECG results</span>
+                    </div>
+                    <span class="appointment-status status-scheduled" data-i18n="status_scheduled">scheduled</span>
+                </li>
+                <li class="appointment-item">
+                    <div class="appointment-details">
+                        <span class="appointment-name">Lakshmi Nair</span>
+                        <span class="appointment-time">3:00 PM</span>
+                        <span class="appointment-description">Routine check-up</span>
+                    </div>
+                    <span class="appointment-status status-scheduled" data-i18n="status_scheduled">scheduled</span>
+                </li>
+            </ul>
+        </div>
+
+        {# Quick Actions Section #}
+        <div class="section-card quick-actions-section">
+            <div class="section-header">
+                <h3 data-i18n="section_quick_actions_title">Quick Actions</h3>
+            </div>
+            <div class="action-buttons-grid">
+                <button class="action-button">
+                    <i class="fas fa-calendar-plus"></i>
+                    <span data-i18n="action_schedule_appointment">Schedule Appointment</span>
+                </button>
+                <button class="action-button">
+                    <i class="fas fa-briefcase"></i>
+                    <span data-i18n="action_create_job_post">Create Job Post</span>
+                </button>
+                <button class="action-button">
+                    <i class="fas fa-search-plus"></i>
+                    <span data-i18n="action_search_patients">Search Patients</span>
+                </button>
+                <button class="action-button">
+                    <i class="fas fa-clock"></i>
+                    <span data-i18n="action_waitlist">Waitlist</span>
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

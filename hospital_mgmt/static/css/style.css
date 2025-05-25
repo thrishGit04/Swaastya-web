@@ -1,0 +1,880 @@
+/* CSS Variables for Light Theme (Default) */
+:root {
+    --bg-primary: #f0f2f5; /* Body background */
+    --bg-secondary: #ffffff; /* Card/Sidebar/Top Bar background */
+    --bg-tertiary: #e9ecef; /* Search bar/Button background */
+    --text-primary: #343a40; /* Main text */
+    --text-secondary: #6c757d; /* Muted text/labels */
+    --text-heading: #212529; /* Heading text */
+    --border-color: #e9ecef; /* Light borders */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Light shadows */
+    --hover-bg: #e9ecef; /* Light hover background */
+    --active-bg: #e9ecef; /* Light active background */
+    --accent-color: #007bff; /* Primary blue accent */
+    --accent-hover: #0056b3; /* Darker blue accent on hover */
+    --icon-color-muted: #adb5bd; /* Muted icon color */
+    --separator-color: #e9ecef; /* Separator lines */
+    --placeholder-color: #adb5bd; /* Placeholder text */
+}
+
+/* CSS Variables for Dark Theme */
+body.dark-theme {
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-tertiary: #2a2a2a;
+    --text-primary: #e0e0e0;
+    --text-secondary: #b0b0b0;
+    --text-heading: #fff;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --hover-bg: #2a2a2a;
+    --active-bg: #2a2a2a;
+    --accent-color: #007bff;
+    --accent-hover: #0056b3;
+    --icon-color-muted: #888;
+    --separator-color: rgba(255, 255, 255, 0.1);
+    --placeholder-color: #888;
+}
+
+/* General Body & Typography */
+body {
+    font-family: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: var(--bg-primary);
+    margin: 0;
+    line-height: 1.6;
+    color: var(--text-primary);
+    overflow-x: hidden;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth theme transition */
+}
+
+/* Dashboard Container - Main Layout */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar {
+    width: 250px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 20px 0;
+    box-shadow: 2px 0 15px var(--shadow-color);
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1001;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    padding: 0 20px 20px 20px;
+    border-bottom: 1px solid var(--separator-color);
+    margin-bottom: 20px;
+}
+
+.sidebar-logo {
+    height: 45px;
+    width: auto;
+    margin-right: 10px;
+    border-radius: 4px;
+    object-fit: contain;
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 1.6em;
+    font-weight: 700;
+    color: var(--text-heading);
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.sidebar-nav .nav-item, .sidebar-footer .nav-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 1.05em;
+    transition: background-color 0.3s ease, color 0.3s ease, border-left 0.3s ease;
+    border-left: 5px solid transparent;
+}
+
+.sidebar-nav .nav-item i, .sidebar-footer .nav-item i {
+    margin-right: 15px;
+    font-size: 1.3em;
+    color: var(--icon-color-muted);
+    transition: color 0.3s ease;
+}
+
+.sidebar-nav .nav-item:hover, .sidebar-footer .nav-item:hover {
+    background-color: var(--hover-bg);
+    color: var(--text-heading);
+}
+
+.sidebar-nav .nav-item.active {
+    background-color: var(--active-bg);
+    color: var(--text-heading);
+    border-left-color: var(--accent-color);
+}
+
+.sidebar-nav .nav-item.active i {
+    color: var(--accent-color);
+}
+
+.sidebar-footer {
+    padding-top: 20px;
+    border-top: 1px solid var(--separator-color);
+    margin-top: 20px;
+}
+
+
+/* Main Content Area */
+.main-content-area {
+    flex-grow: 1;
+    background-color: var(--bg-primary);
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s ease;
+}
+
+/* Top Bar Header */
+.top-bar {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 18px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px var(--shadow-color);
+    z-index: 1000;
+    position: sticky;
+    top: 0;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.top-bar-left h1 {
+    margin: 0;
+    font-size: 1.9em;
+    font-weight: 600;
+    color: var(--text-heading);
+}
+
+.top-bar-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.user-profile-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.user-profile-icons i {
+    font-size: 1.6em;
+    color: var(--accent-color);
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.user-profile-icons i:hover {
+    color: var(--accent-hover);
+    transform: scale(1.1);
+}
+
+.search-and-lang-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-tertiary);
+    border-radius: 30px;
+    padding: 10px 20px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.search-bar:focus-within {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.search-bar i {
+    color: var(--icon-color-muted);
+    margin-right: 12px;
+    font-size: 1.1em;
+}
+
+.search-bar input {
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 1em;
+    outline: none;
+    padding: 0;
+    width: 200px;
+}
+
+.search-bar input::placeholder {
+    color: var(--placeholder-color);
+}
+
+.search-bar button {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 0.95em;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.search-bar button:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.language-selector {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 0.95em;
+    transition: all 0.3s ease;
+    appearance: none;
+    /* Dynamically change SVG fill color based on theme */
+    background-image: var(--arrow-svg-light);
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 12px;
+    padding-right: 30px;
+}
+
+body:not(.dark-theme) .language-selector {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292%22%20height%3D%22292%22%3E%3Cpath%20fill%3D%22%23343a40%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13%205.1L146%20202.7%2018%2074.5a17.6%2017.6%200%200%200-25.3%2023.3l130.8%20130.8c6.7%206.7%2017.7%206.7%2024.4%200l130.8-130.8c9.2-9.1%209.2-23.8%200-33.1-9.1-9.2-23.8-9.2-33%200z%22%2F%3E%3C%2Fsvg%3E'); /* Darker arrow for light theme */
+}
+
+body.dark-theme .language-selector {
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292%22%20height%3D%22292%22%3E%3Cpath%20fill%3D%22%23e0e0e0%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13%205.1L146%20202.7%2018%2074.5a17.6%2017.6%200%200%200-25.3%2023.3l130.8%20130.8c6.7%206.7%2017.7%206.7%2024.4%200l130.8-130.8c9.2-9.1%209.2-23.8%200-33.1-9.1-9.2-23.8-9.2-33%200z%22%2F%3E%3C%2Fsvg%3E'); /* Lighter arrow for dark theme */
+}
+
+.language-selector:hover {
+    background-color: var(--hover-bg);
+    border-color: var(--accent-color);
+}
+
+/* Theme Toggle Switch */
+.theme-toggle {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-left: 15px; /* Space from language selector */
+}
+
+.theme-switch-checkbox {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.theme-switch-label {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc; /* Light grey track */
+    transition: 0.4s;
+    border-radius: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px;
+}
+
+.theme-switch-label:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+.theme-switch-checkbox:checked + .theme-switch-label {
+    background-color: #2196F3; /* Blue track when checked (dark mode) */
+}
+
+.theme-switch-checkbox:checked + .theme-switch-label:before {
+    transform: translateX(26px);
+}
+
+.toggle-icon {
+    color: white; /* Icons should be white on the colored track */
+    font-size: 1.2em;
+}
+
+.light-icon {
+    color: #f39c12; /* Sun icon color */
+}
+
+.dark-icon {
+    color: #34495e; /* Moon icon color */
+}
+
+/* Adjust icon visibility based on theme */
+.theme-switch-checkbox:checked + .theme-switch-label .light-icon {
+    display: none;
+}
+
+.theme-switch-checkbox:not(:checked) + .theme-switch-label .dark-icon {
+    display: none;
+}
+
+
+/* Main Content Wrapper (for padding) */
+.content-wrapper {
+    padding: 30px;
+    flex-grow: 1;
+}
+
+/* Dashboard Grid for Cards */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.dashboard-card {
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 6px 15px var(--shadow-color);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, var(--accent-color-transparent) 0%, transparent 70%); /* Uses accent color */
+    transform: rotate(45deg);
+    transition: all 0.5s ease-out;
+    opacity: 0;
+}
+
+.dashboard-card:hover::before {
+    opacity: 1;
+    transform: rotate(0deg);
+}
+
+.dashboard-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px var(--shadow-color); /* Stronger shadow on hover */
+    background-color: var(--hover-bg);
+}
+
+.card-icon {
+    /* Gradients remain vibrant as they are accents */
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8em;
+    box-shadow: 0 3px 8px rgba(0, 123, 255, 0.2);
+}
+
+.card-content {
+    flex-grow: 1;
+}
+
+.card-title {
+    font-size: 1em;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.card-value {
+    font-size: 2.8em;
+    font-weight: 800;
+    color: var(--text-heading);
+    margin-bottom: 8px;
+    text-shadow: none; /* Removed text shadow for light theme, can be added back for dark */
+}
+
+.card-footer {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+}
+
+.card-footer i {
+    margin-right: 8px;
+}
+
+/* Specific Card Colors (Color Flare - remain vibrant) */
+.dashboard-card.card-appointments .card-icon { background: linear-gradient(135deg, #007bff, #0056b3); box-shadow: 0 3px 8px rgba(0, 123, 255, 0.2); }
+.dashboard-card.card-vacancies .card-icon { background: linear-gradient(135deg, #ffc107, #e0a800); box-shadow: 0 3px 8px rgba(255, 193, 7, 0.2); }
+.dashboard-card.card-candidates .card-icon { background: linear-gradient(135deg, #6f42c1, #563d7c); box-shadow: 0 3px 8px rgba(111, 66, 193, 0.2); }
+.dashboard-card.card-hospitals .card-icon { background: linear-gradient(135deg, #dc3545, #c82333); box-shadow: 0 3px 8px rgba(220, 53, 69, 0.2); }
+
+
+/* Dashboard Sections (Appointments & Quick Actions) */
+.dashboard-sections {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.section-card {
+    background-color: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 6px 15px var(--shadow-color);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--separator-color);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.section-header h3 {
+    margin: 0;
+    font-size: 1.5em;
+    font-weight: 600;
+    color: var(--text-heading);
+}
+
+.section-header a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+}
+
+.section-header a:hover {
+    color: var(--accent-hover);
+}
+
+/* Appointment List Styling */
+.appointment-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.appointment-item {
+    display: flex;
+    flex-direction: column;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.appointment-item:last-child {
+    border-bottom: none;
+}
+
+.appointment-item .appointment-details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.appointment-item .appointment-name {
+    font-weight: 600;
+    color: var(--text-heading);
+    font-size: 1.1em;
+    margin-bottom: 5px;
+}
+
+.appointment-item .appointment-time {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    margin-bottom: 5px;
+}
+
+.appointment-item .appointment-description {
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.appointment-status {
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8em;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: white; /* Status text remains white for contrast on colored background */
+    align-self: flex-start;
+}
+
+.status-confirmed {
+    background-color: #28a745;
+}
+
+.status-scheduled {
+    background-color: #007bff;
+}
+
+/* Quick Actions Buttons */
+.action-buttons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+}
+
+.action-button {
+    background-color: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-align: center;
+    box-shadow: 0 4px 8px var(--shadow-color);
+}
+
+.action-button:hover {
+    background-color: var(--hover-bg);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.action-button i {
+    font-size: 2.2em;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+/* General Link and Button Styling (overrides for common elements) */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* List Styling for Patient/Doctor/Appointment/Billing Pages (non-dashboard) */
+main.content-wrapper .page-title {
+    color: var(--text-heading);
+    border-bottom: 2px solid var(--separator-color);
+    padding-bottom: 15px;
+    margin-top: 0;
+    margin-bottom: 30px;
+    font-size: 2em;
+    font-weight: 700;
+}
+
+main.content-wrapper .page-intro {
+    margin-bottom: 25px;
+    font-size: 1.05em;
+    color: var(--text-secondary);
+}
+
+main.content-wrapper ul.data-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+main.content-wrapper ul.data-list li {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    margin-bottom: 15px;
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    color: var(--text-primary);
+    display: block;
+}
+
+main.content-wrapper ul.data-list li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+main.content-wrapper ul.data-list li span,
+main.content-wrapper ul.data-list li small {
+    font-weight: 500;
+    color: var(--text-secondary);
+    margin-right: 5px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .sidebar {
+        width: 80px;
+        padding: 20px 0;
+    }
+    .sidebar .nav-text, .sidebar-header h2 {
+        display: none;
+    }
+    .sidebar-header {
+        justify-content: center;
+        padding-bottom: 10px;
+    }
+    .sidebar-logo {
+        margin-right: 0;
+    }
+    .sidebar-nav .nav-item, .sidebar-footer .nav-item {
+        justify-content: center;
+        padding: 12px 0;
+    }
+    .sidebar-nav .nav-item i, .sidebar-footer .nav-item i {
+        margin-right: 0;
+    }
+    .top-bar {
+        padding: 15px 20px;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    .top-bar-right {
+        flex-grow: 1;
+        justify-content: flex-end;
+        gap: 10px;
+        flex-direction: row;
+        align-items: center;
+    }
+    .user-profile-icons {
+        margin-bottom: 0;
+        order: 3;
+    }
+    .search-and-lang-container {
+        order: 2;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+    .search-bar {
+        flex-grow: 1;
+    }
+    .search-bar input {
+        width: 100%;
+    }
+    .content-wrapper {
+        padding: 20px;
+    }
+    .dashboard-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .card-icon {
+        margin-bottom: 10px;
+    }
+    .appointment-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    .appointment-status {
+        margin-left: 0;
+        margin-top: 10px;
+        width: fit-content;
+    }
+    .action-buttons-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 10px 0;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .sidebar-header {
+        display: none;
+    }
+    .sidebar-nav {
+        flex-direction: row;
+        flex-grow: 1;
+        justify-content: space-around;
+    }
+    .sidebar-nav .nav-item, .sidebar-footer .nav-item {
+        padding: 10px 5px;
+        flex-direction: column;
+        font-size: 0.8em;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+    }
+    .sidebar-nav .nav-item.active {
+        border-left-color: transparent;
+        border-bottom-color: var(--accent-color);
+    }
+    .sidebar-nav .nav-item i, .sidebar-footer .nav-item i {
+        margin-right: 0;
+        margin-bottom: 5px;
+        font-size: 1.4em;
+    }
+    .sidebar-footer {
+        display: none;
+    }
+
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 15px;
+        gap: 15px;
+    }
+    .top-bar-right {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .user-profile-icons {
+        order: unset;
+        margin-bottom: 10px;
+        width: 100%;
+        justify-content: space-around;
+    }
+    .search-and-lang-container {
+        order: unset;
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .search-bar {
+        width: 100%;
+    }
+    .search-bar button {
+        width: 100%;
+        margin-top: 10px;
+    }
+    .language-selector {
+        width: 100%;
+        text-align: center;
+    }
+    .content-wrapper {
+        padding: 15px;
+    }
+    .dashboard-card {
+        flex-direction: column;
+        text-align: center;
+    }
+    .card-icon {
+        margin-bottom: 10px;
+    }
+    .appointment-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    .appointment-status {
+        margin-left: 0;
+        margin-top: 10px;
+        width: fit-content;
+    }
+    .action-buttons-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* Add this to your style.css */
+
+.download-bill-button {
+    display: inline-flex; /* Use flex to align icon and text */
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+    background-color: var(--accent-color); /* Use accent color */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 0.9em;
+    font-weight: 600;
+    text-decoration: none; /* Remove underline for links */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 10px; /* Space from bill details */
+    align-self: flex-start; /* Align to start in flex container */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.download-bill-button i {
+    font-size: 1.1em;
+    color: white; /* Icon color */
+    margin-right: 0; /* Remove default margin */
+}
+
+.download-bill-button:hover {
+    background-color: var(--accent-hover);
+    transform: translateY(-2px);
+    text-decoration: none; /* Keep no underline on hover */
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2); /* Soft shadow on hover */
+}
+
+/* Adjust li style to make space for the button */
+main.content-wrapper ul.data-list li {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack details and button vertically */
+    justify-content: space-between; /* Space out content vertically */
+    align-items: flex-start; /* Align content to the left */
+    /* Keep existing styles like background, border, padding, etc. */
+}

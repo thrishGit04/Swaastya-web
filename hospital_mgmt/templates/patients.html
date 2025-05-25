@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2 class="page-title" data-i18n="patients_page_title">Patient List</h2>
+    <p class="page-intro" data-i18n="patient_intro">Here you can find a list of all registered patients.</p>
+    <ul class="data-list"> {# Added class for specific styling #}
+        {% for patient in patients %}
+            <li>{{ patient.name }} - <span data-i18n="patient_swsid_label">SWSID:</span>{{ patient.swsid }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

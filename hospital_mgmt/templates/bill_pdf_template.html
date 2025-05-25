@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bill for {{ bill.patient.name }}</title>
+    <style>
+        /* Basic styling for the PDF content */
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            font-size: 12px;
+            margin: 40px;
+            color: #333;
+        }
+        h1 {
+            color: #007bff; /* Blue accent for heading */
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        .bill-details {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+        }
+        .bill-details th, .bill-details td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .bill-details th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 10px;
+            color: #666;
+        }
+        /* Classes for paid status colors */
+        .status-paid {
+            color: green;
+        }
+        .status-unpaid {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Swaastya Hospital - Bill</h1>
+    <table class="bill-details">
+        <tr><th>Bill ID:</th><td>{{ bill.id }}</td></tr>
+        <tr><th>Patient:</th><td>{{ bill.patient.name }} (SWSID: {{ bill.patient.swsid }})</td></tr>
+        <tr><th>Service:</th><td>{{ bill.service_description }}</td></tr>
+        <tr><th>Amount:</th><td>${{ bill.amount|floatformat:2 }}</td></tr>
+        {# CORRECTED: Removed time-related specifiers from date format #}
+        <tr><th>Billing Date:</th><td>{{ bill.billing_date|date:"F j, Y" }}</td></tr>
+        {# Apply conditional class for status color #}
+        <tr><th>Status:</th><td class="{% if bill.is_paid %}status-paid{% else %}status-unpaid{% endif %}">{% if bill.is_paid %}Paid{% else %}Unpaid{% endif %}</td></tr>
+    </table>
+    <div class="footer">
+        Thank you for your visit! <br>
+        Swaastya Hospital, 123 Health Ave, Wellness City.
+    </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2 class="page-title" data-i18n="doctors_page_title">Doctor List</h2>
+    <p class="page-intro" data-i18n="doctor_intro">Browse through the list of doctors and their specializations.</p>
+    <ul class="data-list"> {# Added class for specific styling #}
+        {% for doctor in doctors %}
+            <li>
+                {{ doctor.name }}<br>
+                <small data-i18n="doctor_swsid_label">SWSID:</small>{{ doctor.swsid }}<br>
+                <span data-i18n="doctor_specialization_label">Specialization:</span>{{ doctor.specialization }}<br>
+                <span data-i18n="doctor_hospital_label">Hospital:</span>{{ doctor.hospital_name }}<br>
+                <span data-i18n="doctor_timings_label">Available Timings:</span>{{ doctor.available_timings }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

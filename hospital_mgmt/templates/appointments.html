@@ -1,0 +1,21 @@
+{# templates/appointments.html #}
+{% extends 'base.html' %}
+{% block content %}
+    <h2 class="page-title" data-i18n="appointments_page_title">Appointment List</h2>
+    <p class="page-intro" data-i18n="appointment_intro">View scheduled appointments for patients and doctors.</p>
+    <ul class="data-list"> {# Added class for specific styling #}
+        {% for appointment in appointments %}
+            <li>
+                <span data-i18n="appointment_patient_label">Patient:</span>{{ appointment.patient.name }}<br>
+                <span data-i18n="appointment_doctor_label">Doctor:</span>Dr. {{ appointment.doctor.name }}<br>
+                <span data-i18n="appointment_date_label">Date:</span>{{ appointment.appointment_date|date:"M d, Y" }}<br>
+                <span data-i18n="appointment_time_label">Time:</span>{{ appointment.appointment_time|time:"h:i A" }}<br>
+                {% if appointment.reason %}<span data-i18n="appointment_reason_label">Reason:</span>{{ appointment.reason }}<br>{% endif %}
+                <span data-i18n="appointment_status_label">Status:</span>{{ appointment.status }}
+            </li>
+        {% endfor %}
+        {% if not appointments %}
+            <p data-i18n="no_appointments">No appointments scheduled yet.</p>
+        {% endif %}
+    </ul>
+{% endblock %}
